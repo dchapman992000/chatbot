@@ -13,7 +13,7 @@ steps:
     args: ['gcloud', 'run', 'deploy', 'chatbot', 
            '--image=us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
            '--region', 'us-central1', '--platform', 'managed', 
-           '--allow-unauthenticated', '--port=5000', '--memory=128Mi',
+           '--allow-unauthenticated', '--port', '5000', '--memory', '128Mi',
            '--no-cpu-boost']
 
 # Save test logs to Google Cloud Storage
