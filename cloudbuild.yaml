@@ -19,4 +19,3 @@ steps:
 # Store images in Google Artifact Registry 
 images:
   - us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}
-  - us.gcr.io/${PROJECT_ID}/chatbot:latest
