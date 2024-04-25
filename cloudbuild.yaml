@@ -1,0 +1,25 @@
+# TODO
+# [START cloudbuild_python_dependencies_yaml]
+steps:
+  # Get git
+  - name: sh
+    entrypoint: apt-get
+    args: ["update"]
+  - name: sh
+    entrypoint: apt-get
+    args: ["install", "-y", "git"]
+  # Install dependencies
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "requirements.txt", "--user"]
+  # Fixup PyYaml
+  - name: python
+    entrypoint: pip
+    args: ["uninstall", "-y", "PyYaml", "--user"]
+  - name: python
+    entrypoint: pip
+    args: ["install", "-U", "PyYaml", "--user"]
+# [END cloudbuild_python_dependencies_yaml]
+  # Train!
+  - name: python
+    entrypoint: ./train.py
