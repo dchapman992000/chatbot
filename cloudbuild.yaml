@@ -10,7 +10,7 @@ steps:
 
   # Deploy to Cloud Run
   - name: google/cloud-sdk
-    args: ['gcloud', 'run', 'deploy', 'chatbot-${SHORT_SHA}', 
+    args: ['gcloud', 'run', 'deploy', 'chatbot', 
            '--image=us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
            '--region', 'us-central1', '--platform', 'managed', 
            '--allow-unauthenticated']
