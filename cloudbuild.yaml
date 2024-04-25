@@ -2,16 +2,16 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', '.']
+           'us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', '.']
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}']
+    args: ['push',  'us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}']
 
   # Deploy to Cloud Run
   - name: google/cloud-sdk
     args: ['gcloud', 'run', 'deploy', 'chatbot-${SHORT_SHA}', 
-           '--image=gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
+           '--image=us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
            '--region', 'us-central1', '--platform', 'managed', 
            '--allow-unauthenticated']
 
