@@ -16,12 +16,6 @@ steps:
            '--allow-unauthenticated', '--port', '5000', '--memory', '256Mi',
            '--no-cpu-boost']
 
-# Save test logs to Google Cloud Storage
-artifacts:
-  objects:
-    location: gs://${_BUCKET_NAME}/
-    paths:
-      - ${SHORT_SHA}_test_log.xml
 # Store images in Google Artifact Registry 
 images:
   - us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}
