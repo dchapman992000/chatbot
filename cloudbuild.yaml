@@ -2,16 +2,16 @@ steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
-           'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/chatbot:${SHORT_SHA}', '.']
+           'gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', '.']
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/chatbot:${SHORT_SHA}']
+    args: ['push',  'us-central1-docker.pkg.dev/${PROJECT_ID}/chatbot:${SHORT_SHA}']
 
   # Deploy to Cloud Run
   - name: google/cloud-sdk
     args: ['gcloud', 'run', 'deploy', 'chatbot-${SHORT_SHA}', 
-           '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/chatbot:${SHORT_SHA}', 
+           '--image=us-central1-docker.pkg.dev/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
            '--region', 'us-central1', '--platform', 'managed', 
            '--allow-unauthenticated']
 
@@ -23,4 +23,4 @@ artifacts:
       - ${SHORT_SHA}_test_log.xml
 # Store images in Google Artifact Registry 
 images:
-  - us-central1-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REGISTRY_REPO}/chatbot:${SHORT_SHA}
+  - gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}
