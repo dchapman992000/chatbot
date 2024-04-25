@@ -15,6 +15,4 @@ def get_bot_response():
     return str(chatbot.get_response(userText))
 
 if __name__ == "__main__":
-#    from waitress import serve
-#    serve(app, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
     app.run(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
