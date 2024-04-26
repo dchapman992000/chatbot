@@ -14,7 +14,7 @@ steps:
            '--image=us.gcr.io/${PROJECT_ID}/chatbot:${SHORT_SHA}', 
            '--region', 'us-central1', '--platform', 'managed', 
            '--allow-unauthenticated', '--port', '5000', '--memory', '256Mi',
-           '--no-cpu-boost']
+           '--max-instances', '3', '--no-cpu-boost']
 
 # Store images in Google Artifact Registry 
 images:
