@@ -11,10 +11,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY app/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Workaround due to chatterbot-corpus being so old
-RUN pip uninstall -y PyYaml
-RUN pip install --upgrade PyYaml --only-binary=:all:
-
 
 FROM python:3.12-slim
 
