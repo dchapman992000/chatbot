@@ -32,7 +32,3 @@ push:
 	kubectl rollout restart deployment/$(IMAGE_NAME)
 	sleep 15
 	kubectl get pods | sed '1p;/$(IMAGE_NAME)/!d'
-
-.PHONY: run
-run:
-	go run .
